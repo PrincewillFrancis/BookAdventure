@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class LearningCurve : MonoBehaviour
 {
@@ -17,6 +19,16 @@ public class LearningCurve : MonoBehaviour
     public string RareItem = "Relic Stone";
     public string CharacterAction = "Attack";
     public int Dice = 7;
+    public int PlayerLives = 3;
+    public Transform CamTransform;
+    public GameObject DirectionLight;
+    public Transform LightTransform; 
+
+
+
+
+
+
 
 
 
@@ -25,6 +37,59 @@ public class LearningCurve : MonoBehaviour
     void Start() //<- void start is a method, same with void ComputeAge
 
     {
+        CamTransform = this.GetComponent<Transform>();
+        Debug.Log(CamTransform.localPosition);
+
+        //DirectionLight = GameObject.Find("Directional Light"); 
+        LightTransform = DirectionLight.GetComponent<Transform>();
+        Debug.Log(LightTransform.localPosition);
+
+
+        Character hero = new Character();
+        hero.PrintStatsInfo();
+
+        Character heroine = new Character("Agatha");
+        heroine.PrintStatsInfo();
+
+
+
+        Weapon huntingBow = new Weapon("Hunting Bow", 105);
+
+
+        Weapon warBow = huntingBow;
+        warBow.Name = "War Bow";
+        warBow.Damage = 155;
+        huntingBow.PrintWeaponStats();
+        warBow.PrintWeaponStats();
+
+        Paladin knight = new Paladin("Sir Arthur", huntingBow);
+        knight.PrintStatsInfo();
+    
+
+
+
+        /*Dictionary<string, int> ItemInventory = new
+        Dictionary<string, int>()
+        {
+            {"Potion", 5 },
+            {"Antidote", 7 },
+            {"Aspirin", 1 }
+         };
+
+        foreach (KeyValuePair<string, int> kvp in ItemInventory)
+        {
+            Debug.LogFormat("Item: {0} - {1}g", kvp.Key, kvp.Value);
+
+
+         }
+*/
+
+
+        // Debug.LogFormat("Items: {0}", ItemInventory.Count);
+        //initialized list, called questpartymembers, and used the count method from the list class to print number of elements
+
+
+
         //if (IsCreator = true)
         //{
 
@@ -44,10 +109,67 @@ public class LearningCurve : MonoBehaviour
         // Debug.Log(nextSkillLevel);
         // Debug.Log(GenerateCharacter("Faye", characterLevel));
 
+        /* HealthStatus();
         Thievery();
         OpenTreasureChamber();
         PrintCharacterAction();
         RollDice();
+        FindPartyMmember();
+        */
+    }
+    
+
+    public void HealthStatus()
+    {
+        while (PlayerLives > 0)
+        {
+            Debug.Log("Still alive!");
+            PlayerLives--;
+        }
+        Debug.Log("Player KO'D...");
+    }
+
+    public void FindPartyMmember()
+    {
+        List<string> QuestPartyMembers = new
+        List<string>()
+    {
+        "Grim the Barbarian",
+        "Merlin the Wise",
+        "Sterling the Knight",
+
+
+
+     };
+        QuestPartyMembers.Add("Craven the Necromancer");
+        QuestPartyMembers.Insert(1, "Tanis the Thief");
+        QuestPartyMembers.RemoveAt(0);
+
+        int listLength = QuestPartyMembers.Count;
+
+
+        Debug.LogFormat("Party Members: {0}", listLength);
+
+        foreach (string partyMemember in QuestPartyMembers)
+        {
+            Debug.LogFormat("{0} - Here!", partyMemember);
+
+
+        }
+
+
+
+        //for (int i = 0; i < listLength; i++)
+        /* {
+
+              Debug.LogFormat("Index: {0} - {1}", i, QuestPartyMembers[i]);
+
+              if (QuestPartyMembers[i] == "Merlin the Wise")
+              {
+                  Debug.Log("Glad you're here Merlin!");
+               }
+
+          } */
     }
 
     public void RollDice() //<-- switch
@@ -64,8 +186,8 @@ public class LearningCurve : MonoBehaviour
             default:
                 Debug.Log("You completely missed and fell on your face.");
                 break;
-         }
-     }
+        }
+    }
 
     public void PrintCharacterAction() //<-- switch
     {

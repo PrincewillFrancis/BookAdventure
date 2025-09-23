@@ -281,6 +281,10 @@ MonoBehaviour:
   RareItem: Relic Stone
   CharacterAction: Attack
   Dice: 7
+  PlayerLives: 3
+  CamTransform: {fileID: 0}
+  DirectionLight: {fileID: 410087039}
+  LightTransform: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
