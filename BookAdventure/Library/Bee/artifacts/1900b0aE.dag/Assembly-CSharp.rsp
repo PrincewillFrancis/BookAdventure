@@ -425,6 +425,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.56f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.56f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/Character.cs"
+"Assets/Scripts/ItemRotation.cs"
 "Assets/Scripts/LearningCurve.cs"
 "Assets/Scripts/Paladin.cs"
 "Assets/Scripts/Weapon.cs"
